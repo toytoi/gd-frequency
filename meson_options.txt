@@ -1,0 +1,15 @@
+option(
+  'block_size',
+  type: 'integer',
+  min: 4,
+  max: 128,
+  value: 64,
+  description: 'Number of sorted entries per compressed lookup block.',
+)
+
+option(
+  'native_optimizations',
+  type: 'boolean',
+  value: true,
+  description: 'Enable -march=native/-mtune=native when supported.',
+)
