@@ -222,10 +222,32 @@ create_link() {
 	remove_command_link
 	run_privileged ln -s "$command_target" "$command_link"
 
+	# Check shell PATH (interactive sessions).
 	case ":$PATH:" in
 		*":$link_dir:"*) ;;
-		*) echo "note: $link_dir is not currently on PATH" >&2 ;;
+		*) echo "note: $link_dir is not currently on your shell PATH" >&2 ;;
 	esac
+
+	# Check systemd user environment PATH (GUI apps / GoldenDict).
+	# ~/.local/bin is often missing there even when it is on the shell PATH.
+	if ! $system_install && [[ "$link_dir" == "$HOME/.local/bin" ]]; then
+		local systemd_path
+		systemd_path=$(systemctl --user show-environment 2>/dev/null \
+			| grep '^PATH=' | cut -d= -f2-)
+		case ":${systemd_path}:" in
+			*":$link_dir:"*) ;;
+			*)
+				local env_dir="$HOME/.config/environment.d"
+				local env_file="$env_dir/50-local-bin.conf"
+				mkdir -p "$env_dir"
+				if [[ ! -f "$env_file" ]]; then
+					printf 'PATH=%s:$PATH\n' "$link_dir" > "$env_file"
+					echo "note: wrote $env_file to add $link_dir to the systemd user environment"
+					echo "      log out and back in (or reboot) for GUI apps like GoldenDict to see it"
+				fi
+				;;
+		esac
+	fi
 }
 
 write_sentinel() {
