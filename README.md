@@ -85,7 +85,6 @@ If you installed the program using the provided script, simply use: `gd-frequenc
 ```
 gd-frequency --word %GDWORD% \
   --dict-path <PATH/TO/JPDB.zip> \
-  --dict-path <PATH/TO/H_Freq.zip> \
   --dict-path <PATH/TO/vn_freq.zip> \
   --bin-path <PATH/TO/dict.bin>
 ```
