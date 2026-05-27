@@ -2,7 +2,8 @@
 
 A [GoldenDict](https://github.com/xiaoyifang/goldendict-ng) plugin to lookup Japanese word frequency across multiple Yomitan frequency dictionaries.
 
-![image](https://github.com/user-attachments/assets/e1c1a06a-9e96-49d3-a176-77cbf8b44579)
+<img width="267" height="295" alt="image" src="https://github.com/user-attachments/assets/62ddf62b-60ee-4057-b9ec-3ee9e6974b5d" />
+
 
 ## Installation
 
