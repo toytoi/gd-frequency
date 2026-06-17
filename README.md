@@ -1,6 +1,6 @@
 # gd-frequency
 
-A [GoldenDict](https://github.com/xiaoyifang/goldendict-ng) plugin to lookup Japanese word frequency across multiple Yomitan frequency dictionaries.
+A [GoldenDict](https://github.com/xiaoyifang/goldendict-ng) plugin to lookup Japanese word frequency across multiple Yomitan style frequency dictionaries.
 
 <img width="267" height="295" alt="image" src="https://github.com/user-attachments/assets/62ddf62b-60ee-4057-b9ec-3ee9e6974b5d" />
 
@@ -13,7 +13,7 @@ Clone this repository into a directory
 git clone 'https://github.com/toytoi/gd-frequency.git'
 ```
 
-Run the installer. It works as a self-contained user install by default and does not need sudo:
+Run the installer. It is a self contained user install by default.
 
 ```
 ./quickinstall.sh
@@ -28,7 +28,7 @@ Default layout:
 
 The install step builds the binary, copies the zip dictionaries, generates the compact cache, and creates the command symlink. `clang++`, Meson, Ninja, and zlib development headers are required.
 
-Common dependency package names:
+Install if not already present:
 
 ```
 # Debian/Ubuntu
@@ -47,8 +47,7 @@ Uninstall:
 ./quickinstall.sh --uninstall
 ```
 
-System install, still isolated under `/opt/gd-frequency`:
-
+System install:
 ```
 ./quickinstall.sh --system
 ```
@@ -59,7 +58,7 @@ System uninstall:
 ./quickinstall.sh --system --uninstall
 ```
 
-Custom self-contained prefix:
+Custom self contained prefix:
 
 ```
 ./quickinstall.sh --prefix "$HOME/opt/gd-frequency" --link-dir "$HOME/.local/bin"
